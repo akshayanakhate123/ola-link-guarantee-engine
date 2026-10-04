@@ -1,0 +1,199 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+
+@theme {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  --color-canvas: #fafbfa;
+  --color-ink: #171a19;
+  --color-sub: #737a76;
+  --color-pos: #0b7357;
+  --color-posbg: #e8f3ef;
+  --color-fail: #b4441c;
+  --color-failbg: #faeeea;
+  --color-line: #e8ebe9;
+  --color-warn: #8a5a00;
+  --shadow-soft: 0 1px 2px rgba(23, 26, 25, 0.04), 0 4px 14px rgba(23, 26, 25, 0.04);
+}
+
+html,
+body {
+  background: #fafbfa;
+  color: #171a19;
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+}
+
+svg text {
+  font-family: var(--font-sans);
+}
+
+.label {
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #737a76;
+}
+
+.panel {
+  animation: fade-up 0.45s ease-out both;
+  transition: box-shadow 0.2s, border-color 0.2s;
+  background: #fff;
+  border: 1px solid #e8ebe9;
+  border-radius: 6px;
+  box-shadow: var(--shadow-soft);
+}
+
+/* sliders */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 4px;
+  border-radius: 2px;
+  background: linear-gradient(to right, #0b7357 var(--p), #e8ebe9 var(--p));
+  outline: none;
+  transition: background 0.15s;
+}
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #0b7357;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.range:hover::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+.range::-moz-range-thumb {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #0b7357;
+  cursor: pointer;
+}
+.range:disabled {
+  opacity: 0.5;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #0b7357;
+  outline-offset: 1px;
+}
+
+/* purposeful, one-shot animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes banner-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pulse-once {
+  from {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(2.2);
+  }
+}
+.fade-up {
+  animation: fade-up 0.32s ease-out both;
+}
+.banner-in {
+  animation: banner-in 0.38s ease-out both;
+}
+.pulse-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pulse-once 0.9s ease-out 1 both;
+}
+
+@keyframes pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  60% {
+    transform: scale(1.06);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes sweep {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.pop {
+  animation: pop 0.4s ease-out both;
+}
+.draw {
+  stroke-dasharray: 1;
+  animation: draw 0.9s ease-out both;
+}
+.sweep {
+  transform-origin: left;
+  animation: sweep 0.45s linear both;
+}
+.panel:hover {
+  box-shadow: 0 2px 4px rgba(23, 26, 25, 0.05), 0 8px 22px rgba(23, 26, 25, 0.07);
+}
+button:not(:disabled):active {
+  transform: scale(0.98);
+}
+button {
+  transition: transform 0.1s, background-color 0.2s, border-color 0.2s, color 0.2s, opacity 0.2s;
+}
+.col > :nth-child(2) { animation-delay: 0.06s; }
+.col > :nth-child(3) { animation-delay: 0.12s; }
+.col > :nth-child(4) { animation-delay: 0.18s; }
+.col > :nth-child(5) { animation-delay: 0.24s; }
+.col > :nth-child(6) { animation-delay: 0.3s; }
+.col > :nth-child(7) { animation-delay: 0.36s; }
+.col > :nth-child(8) { animation-delay: 0.42s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
