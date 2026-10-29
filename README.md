@@ -59,22 +59,6 @@ The corridor breaches its guarantee when the hit rate is below 95% or the Rs 2,4
 
 React 18, TypeScript, Vite, Tailwind CSS v4, Lucide icons, Inter (bundled via Fontsource). No animation library: transitions are CSS and `requestAnimationFrame`, and all motion respects `prefers-reduced-motion`.
 
-## Getting started
-
-```bash
-npm install
-npm run dev
-```
-
-Other scripts:
-
-```bash
-npm run build    # type-check and production build into dist
-npm run check    # run the engine on several scenarios and print results
-```
-
-`npm run check` is a quick way to verify the sanity requirements: defaults give 100% on time with zero spend, and maximum disruption (metro delay 20, traffic 1.8x, both shuttles down) breaches the guarantee.
-
 ## Project structure
 
 ```
